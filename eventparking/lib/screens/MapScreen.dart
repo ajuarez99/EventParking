@@ -14,7 +14,13 @@ class _MapScreen extends State<MapScreen>{
   MapsService googleMap = new MapsService();
    @override
   Widget build(BuildContext context) {
-   return googleMap.build(context);
+   return new Scaffold(
+      appBar: AppBar(
+       title: Text(widget.title),
+     ),
+      
+      body: googleMap.googleMap(),
+   );
   }
 }
 

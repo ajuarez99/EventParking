@@ -19,19 +19,15 @@ class MapsService  {
       tilt: 59.440717697143555,
       zoom: 19.151926040649414);
 
-
-  Widget build(BuildContext context) {
-    return new Scaffold(
+Widget googleMap(){
+   return new GoogleMap(mapType: MapType.satellite,
+                        initialCameraPosition: _kGooglePlex,
+                        myLocationEnabled: true,
+                      );
       
-      body: GoogleMap(
-        mapType: MapType.satellite,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
-    
-    );
-  }
+   }
+
+  
+
 }
   
