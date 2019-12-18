@@ -13,19 +13,19 @@ class _BottomTravelBar extends State<BottomTravelBar>{
   Widget build(BuildContext context){
   return  BottomNavigationBar(
         
-type: BottomNavigationBarType.shifting ,
+type: BottomNavigationBarType.fixed ,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.ac_unit,color: Color.fromARGB(255, 0, 0, 0)),
             title: new Text('')
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.ac_unit,color: Color.fromARGB(255, 0, 0, 0)),
-            title: new Text('')
+            icon: Icon(Icons.home,color: Color.fromARGB(255, 0, 0, 0)),
+            title: new Text('Home')
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.ac_unit,color: Color.fromARGB(255, 0, 0, 0)),
-            title: new Text('')
+            icon: Icon(Icons.person_outline,color: Color.fromARGB(255, 0, 0, 0)),
+            title: new Text('Profile')
           ),        
         ],
   );

@@ -18,7 +18,7 @@ class MapsService  {
       zoom: 19.151926040649414);
 
 Widget googleMap(){
-   return new GoogleMap(mapType: MapType.satellite,
+   return new GoogleMap(mapType: MapType.normal,
                         initialCameraPosition: _kGooglePlex,
                         myLocationEnabled: true,
                       );
