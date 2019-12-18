@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:eventparking/widgets/BottomNavigation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../services/MapsService.dart';
+import '../widgets/BottomNavigation.dart';
 
 class MapScreen extends StatefulWidget {
 MapScreen({Key key, this.title}) : super(key: key);
@@ -20,6 +22,7 @@ class _MapScreen extends State<MapScreen>{
      ),
       
       body: googleMap.googleMap(),
+      bottomNavigationBar: BottomTravelBar(),
    );
   }
 }
