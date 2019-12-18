@@ -8,7 +8,10 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="eventparking"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        >
+            <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyAD5jNJcjrbNd0dRulBiBvQC1jpGaJhDts"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
