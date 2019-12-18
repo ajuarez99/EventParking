@@ -46,7 +46,7 @@ class MapSampleState extends State<MapSample> {
         title: Text(widget.title),
       ),
       body: GoogleMap(
-        mapType: MapType.hybrid,
+        mapType: MapType.satellite,
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
