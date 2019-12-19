@@ -21,6 +21,7 @@ class _MapScreen extends State<MapScreen> {
     
     return new Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(widget.title),
         centerTitle: true,
       ),

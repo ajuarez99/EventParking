@@ -21,16 +21,12 @@ class _BottomTravelBar extends State<BottomTravelBar>{
                     });
          
           if (index == 2){
-            Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => new ProfileScreen()),
-            );
+            Navigator.pushNamed(context, '/b');
+            
           }
           else if(index == 1){
-             Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => new MapScreen(title: 'Event Parking')),
-            );
+              Navigator.pushNamed(context, '/a');
+            
           }
         }, 
       currentIndex: 0,

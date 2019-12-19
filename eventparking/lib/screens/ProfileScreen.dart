@@ -13,6 +13,7 @@ class _ProfileScreen extends State<ProfileScreen> {
     return new Scaffold(
       appBar: AppBar(
         title: Text("Profile"),
+        automaticallyImplyLeading: false,
         centerTitle: true,
       ),
       bottomNavigationBar: BottomTravelBar(),
