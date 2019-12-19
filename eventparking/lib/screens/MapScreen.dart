@@ -1,12 +1,11 @@
 import 'dart:async';
 
 import 'package:eventparking/widgets/BottomNavigation.dart';
-import 'package:eventparking/widgets/SizableHomeMenu.dart';
+import 'package:eventparking/widgets/ParkingCard.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../services/MapsService.dart';
 import '../widgets/BottomNavigation.dart';
-import '../widgets/SizableHomeMenu.dart';
+import '../widgets/ParkingCard.dart';
 class MapScreen extends StatefulWidget {
   MapScreen({Key key, this.title}) : super(key: key);
   final String title;
@@ -19,37 +18,41 @@ class _MapScreen extends State<MapScreen> {
   
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    
     return new Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
       ),
-    body: Column(children: <Widget>[
-              Row(
-                //ROW 1
-                children: [
-                  Container(  
-                   width: screenSize.width,
-                   height: screenSize.height *.5,
-                   child: googleMap.googleMap()
-                  ),         
-                ],
+    body: Stack(
+          children: <Widget>[ 
+            googleMap.googleMap(),
+             Container(
+              padding: EdgeInsets.only(top: 500, bottom: 50),
+              child: ListView(
+                padding: EdgeInsets.only(left: 20),
+                 children: getParkingSpots(),
+                scrollDirection: Axis.horizontal,
               ),
-              Row(//ROW 2
-                children: [  
-                  Container(
-                    width: screenSize.width,
-                    height: screenSize.height *.3,
-                    child: SizableHomeMenu(),
-                    
-                  )
-              ]),
-      
-    ]),
-         
+             ),
+          ],
+          
+    ),   
         
       bottomNavigationBar: BottomTravelBar(),
     );
   }
+   List<Widget> getParkingSpots() {
+    
+    List<Widget> cards = [];
+    
+      cards.add(ParkingCard());
+      cards.add(ParkingCard());
+      cards.add(ParkingCard());
+      cards.add(ParkingCard());
+      cards.add(ParkingCard());
+    
+    return cards;
+  }
 }
+

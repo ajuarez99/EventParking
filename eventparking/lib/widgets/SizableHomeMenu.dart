@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../services/MapsService.dart';
 class SizableHomeMenu extends StatefulWidget{
   @override
   _SizableHomeMenu createState() => _SizableHomeMenu();
@@ -9,7 +10,7 @@ class _SizableHomeMenu extends State<SizableHomeMenu>with SingleTickerProviderSt
  AnimationController _controller;
   Duration _duration = Duration(milliseconds: 500);
   Tween<Offset> _tween = Tween(begin: Offset(0, 1), end: Offset(0, 0));
-
+  MapsService googleMap = new MapsService();
   @override
   void initState() {
     super.initState();
@@ -19,14 +20,21 @@ class _SizableHomeMenu extends State<SizableHomeMenu>with SingleTickerProviderSt
   Widget build(BuildContext context){
     return CustomScrollView(
   slivers: <Widget>[
-    const SliverAppBar(
-      pinned: false,
+    googleMap.googleMap(),
+    PreferredSize(
+    preferredSize: Size.fromHeight(20),
+    child: SliverAppBar(
+      
+      pinned: true,
+       
       backgroundColor: Colors.white,
-      expandedHeight: 250.0,
+      expandedHeight: 50.0,
       flexibleSpace: FlexibleSpaceBar(
         title: Icon(Icons.reorder,color: Color.fromARGB(255, 0, 0, 0)),
         centerTitle: true,
+        
       ),
+    ),
     ),
     SliverGrid(
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
@@ -43,7 +51,7 @@ class _SizableHomeMenu extends State<SizableHomeMenu>with SingleTickerProviderSt
             child: Text('Grid Item $index'),
           );
         },
-        childCount: 20,
+        childCount: 10,
       ),
     ),
    
