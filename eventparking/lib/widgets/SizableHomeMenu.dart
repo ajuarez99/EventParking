@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../services/MapsService.dart';
 class SizableHomeMenu extends StatefulWidget{
   @override
@@ -7,14 +6,14 @@ class SizableHomeMenu extends StatefulWidget{
 }
 
 class _SizableHomeMenu extends State<SizableHomeMenu>with SingleTickerProviderStateMixin{
- AnimationController _controller;
-  Duration _duration = Duration(milliseconds: 500);
-  Tween<Offset> _tween = Tween(begin: Offset(0, 1), end: Offset(0, 0));
+ 
+  
+
   MapsService googleMap = new MapsService();
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: _duration);
+  
   }
   @override 
   Widget build(BuildContext context){

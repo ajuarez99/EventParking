@@ -1,7 +1,4 @@
-import 'dart:async';
 
-import 'package:eventparking/screens/MapScreen.dart';
-import 'package:eventparking/screens/ProfileScreen.dart';
 import 'package:flutter/material.dart';
 
 class BottomTravelBar extends StatefulWidget{
@@ -33,8 +30,8 @@ class _BottomTravelBar extends State<BottomTravelBar>{
           type: BottomNavigationBarType.fixed ,
                   items: [
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.ac_unit,color: Color.fromARGB(255, 0, 0, 0)),
-                      title: new Text('')
+                      icon: Icon(Icons.radio,color: Color.fromARGB(255, 0, 0, 0)),
+                      title: new Text('Add')
                       
                     ),
                     BottomNavigationBarItem(

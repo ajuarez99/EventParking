@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "586368134696",
+    "firebase_url": "https://eventparking-78803.firebaseio.com",
+    "project_id": "eventparking",
+    "storage_bucket": "eventparking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586368134696:android:a8fbc4c95e0337fac2cf1d",
+        "android_client_info": {
+          "package_name": "com.example.eventparking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586368134696-ll1qbdpep5esunv074vns18i21fces3l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD5jNJcjrbNd0dRulBiBvQC1jpGaJhDts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586368134696-ll1qbdpep5esunv074vns18i21fces3l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
