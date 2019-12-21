@@ -1,38 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
- 
-class SliverMenuHeader extends SingleChildRenderObjectWidget{
-SliverMenuHeader({Widget child, Key key}) : super(child:child, key: key);
+
+class SliverMenuHeader extends SingleChildRenderObjectWidget {
+  SliverMenuHeader({Widget child, Key key}) : super(child: child, key: key);
 
   @override
   RenderObject createRenderObject(BuildContext context) {
-    
     return RenderSliverMenuHeader();
   }
 }
 
-class RenderSliverMenuHeader extends RenderSliverSingleBoxAdapter{
-  RenderSliverMenuHeader({RenderBox child,}) : super(child:child);
+class RenderSliverMenuHeader extends RenderSliverSingleBoxAdapter {
+  RenderSliverMenuHeader({
+    RenderBox child,
+  }) : super(child: child);
 
   @override
-  void performLayout(){
-    if(child == null){
+  void performLayout() {
+    if (child == null) {
       geometry = SliverGeometry.zero;
       return;
     }
     child.layout(constraints.asBoxConstraints(), parentUsesSize: true);
     double childExtent;
-    switch(constraints.axis){
+    switch (constraints.axis) {
       case Axis.horizontal:
-      childExtent = child.size.width;
-      break;
+        childExtent = child.size.width;
+        break;
       case Axis.vertical:
-      childExtent = child.size.height;
-      break;
+        childExtent = child.size.height;
+        break;
     }
-  assert(childExtent != null);
-    final double paintedChildSize = calculatePaintOffset(constraints, from: 0.0, to: childExtent);
-    final double cacheExtent = calculateCacheOffset(constraints, from: 0.0, to: childExtent);
+    assert(childExtent != null);
+    final double paintedChildSize =
+        calculatePaintOffset(constraints, from: 0.0, to: childExtent);
+    final double cacheExtent =
+        calculateCacheOffset(constraints, from: 0.0, to: childExtent);
 
     assert(paintedChildSize.isFinite);
     assert(paintedChildSize >= 0.0);
@@ -42,8 +45,9 @@ class RenderSliverMenuHeader extends RenderSliverSingleBoxAdapter{
       cacheExtent: cacheExtent,
       maxPaintExtent: childExtent,
       hitTestExtent: paintedChildSize,
-      hasVisualOverflow: childExtent > constraints.remainingPaintExtent || constraints.scrollOffset > 0.0,
+      hasVisualOverflow: childExtent > constraints.remainingPaintExtent ||
+          constraints.scrollOffset > 0.0,
     );
     setChildParentData(child, constraints, geometry);
-    }
   }
+}
