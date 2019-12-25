@@ -16,9 +16,9 @@ class _BottomTravelBar extends State<BottomTravelBar> {
         });
 
         if (index == 2) {
-          Navigator.pushNamed(context, '/b');
+          Navigator.pushNamed(context, '/profile');
         } else if (index == 1) {
-          Navigator.pushNamed(context, '/a');
+          Navigator.pushNamed(context, '/map');
         }
       },
       currentIndex: 0,

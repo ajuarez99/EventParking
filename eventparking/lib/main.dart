@@ -1,6 +1,6 @@
 import 'package:eventparking/screens/ProfileScreen.dart';
 import 'package:flutter/material.dart';
-
+import './screens/SignInScreen.dart';
 import './screens/MapScreen.dart';
 
 void main() => runApp(MyApp());
@@ -13,10 +13,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      initialRoute: '/a',
+      initialRoute: '/signin',
       routes: <String, WidgetBuilder>{
-        '/a': (BuildContext context) => MapScreen(title: 'Event Parking'),
-        '/b': (BuildContext context) => ProfileScreen(),
+        '/map': (BuildContext context) => MapScreen(title: 'Event Parking'),
+        '/profile': (BuildContext context) => ProfileScreen(),
+        '/signin': (BuildContext context) => SignInScreen(),
       },
     );
   }
