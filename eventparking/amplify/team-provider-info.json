@@ -11,5 +11,18 @@
             "StackId": "arn:aws:cloudformation:us-east-2:163303307941:stack/amplify-eventparking-event-154253/5836fcd0-2696-11ea-b1fa-0ad7a569cb8c",
             "AmplifyAppId": "d2hdojpo3m8a72"
         }
+    },
+    "eventios": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-eventparking-eventios-202839-authRole",
+            "UnauthRoleArn": "arn:aws:iam::163303307941:role/amplify-eventparking-eventios-202839-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::163303307941:role/amplify-eventparking-eventios-202839-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-eventparking-eventios-202839-deployment",
+            "UnauthRoleName": "amplify-eventparking-eventios-202839-unauthRole",
+            "StackName": "amplify-eventparking-eventios-202839",
+            "StackId": "arn:aws:cloudformation:us-east-2:163303307941:stack/amplify-eventparking-eventios-202839/44098de0-26be-11ea-a262-0286ec33b064",
+            "AmplifyAppId": "d2hdojpo3m8a72"
+        }
     }
 }
