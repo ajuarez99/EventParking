@@ -1,9 +1,11 @@
+import 'package:eventparking/services/secret.dart';
 import 'package:eventparking/widgets/CustomButton.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import '../widgets/CustomText.dart';
 import 'package:flutter/services.dart';
 import '../services/Validator.dart';
+import 'package:amazon_cognito_identity_dart/cognito.dart';
 
 class SignInScreen extends StatefulWidget {
   _SignInScreenState createState() => _SignInScreenState();
@@ -59,28 +61,28 @@ class _SignInScreenState extends State<SignInScreen> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(
-                        top: 70.0, bottom: 10.0, left: 120.0, right: 10.0),
+                        top: 100.0, bottom: 10.0, left: 100.0, right: 10.0),
                     child: Text(
                       "Event Parking",
                       softWrap: true,
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                        color: Color.fromRGBO(255, 220, 215, 1.0),
+                        color: Color.fromRGBO(255, 250, 255, 1.0),
                         decoration: TextDecoration.none,
-                        fontSize: 24.0,
+                        fontSize: 30.0,
                         fontWeight: FontWeight.w700,
-                        fontFamily: "OpenSans",
+                        fontFamily: 'OpenSans',
                       ),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        top: 20.0, bottom: 10.0, left: 15.0, right: 15.0),
+                        top: 50.0, bottom: 10.0, left: 15.0, right: 15.0),
                     child: _emailField,
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        top: 10.0, bottom: 20.0, left: 15.0, right: 15.0),
+                        top: 20.0, bottom: 20.0, left: 15.0, right: 15.0),
                     child: _passwordField,
                   ),
                   Padding(
@@ -93,7 +95,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       textColor: Colors.white,
                       onPressed: () {
                         _emailLogin(
-                            email: _email.text,
+                            email: _email.text.trim(),
                             password: _password.text,
                             context: context);
                       },
@@ -162,6 +164,48 @@ class _SignInScreenState extends State<SignInScreen> {
     if (Validator.validateEmail(email) &&
         Validator.validatePassword(password)) {
       try {
+        final userPool =
+            new CognitoUserPool(cognitoUserPoolId, cognitoClientId);
+        final cognitoUser = new CognitoUser(email, userPool);
+        final authDetails =
+            new AuthenticationDetails(username: email, password: password);
+        CognitoUserSession session;
+
+        bool registrationConfirmed = false;
+        cognitoUser.resendConfirmationCode();
+        registrationConfirmed = await cognitoUser.confirmRegistration(password);
+        cognitoUser.resendConfirmationCode();
+        try {
+          session = await cognitoUser.authenticateUser(authDetails);
+        } on CognitoUserNewPasswordRequiredException catch (e) {
+          print(e);
+
+          session = await cognitoUser.authenticateUser(authDetails);
+
+          // handle New Password challenge
+        } on CognitoUserMfaRequiredException catch (e) {
+          print(e);
+          // handle SMS_MFA challenge
+        } on CognitoUserSelectMfaTypeException catch (e) {
+          print(e);
+          // handle SELECT_MFA_TYPE challenge
+        } on CognitoUserMfaSetupException catch (e) {
+          print(e);
+          // handle MFA_SETUP challenge
+        } on CognitoUserTotpRequiredException catch (e) {
+          print(e);
+          // handle SOFTWARE_TOKEN_MFA challenge
+        } on CognitoUserCustomChallengeException catch (e) {
+          print(e);
+          // handle CUSTOM_CHALLENGE challenge
+        } on CognitoUserConfirmationNecessaryException catch (e) {
+          print(e);
+          // handle User Confirmation Necessary
+        } catch (e) {
+          print(e);
+        }
+        print(session.getAccessToken().getJwtToken());
+        Navigator.pushNamed(context, '/maps');
         SystemChannels.textInput.invokeMethod('TextInput.hide');
         _changeBlackVisible();
       } catch (e) {

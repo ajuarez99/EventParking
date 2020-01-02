@@ -10,6 +10,11 @@
             "StackName": "amplify-eventparking-event-154253",
             "StackId": "arn:aws:cloudformation:us-east-2:163303307941:stack/amplify-eventparking-event-154253/5836fcd0-2696-11ea-b1fa-0ad7a569cb8c",
             "AmplifyAppId": "d2hdojpo3m8a72"
+        },
+        "categories": {
+            "auth": {
+                "eventparkingdef5709b": {}
+            }
         }
     },
     "eventios": {

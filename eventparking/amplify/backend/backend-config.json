@@ -1,1 +1,9 @@
-{}
+{
+	"auth": {
+		"eventparkingdef5709b": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}
