@@ -30,7 +30,7 @@ class RegistrationCustomText extends StatelessWidget {
         keyboardType: keyboard,
         cursorColor: Colors.red[200],
         decoration: InputDecoration(
-          prefixIcon: Icon(icon, color: Colors.orange[200], size: 20),
+          prefixIcon: Icon(icon, color: Colors.red[200], size: 20),
           hintText: hint,
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),
