@@ -1,4 +1,5 @@
 import 'package:eventparking/screens/ProfileScreen.dart';
+import 'package:eventparking/screens/RegistrationScreen.dart';
 import 'package:flutter/material.dart';
 import './screens/SignInScreen.dart';
 import './screens/MapScreen.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         '/map': (BuildContext context) => MapScreen(title: 'Event Parking'),
         '/profile': (BuildContext context) => ProfileScreen(),
         '/signin': (BuildContext context) => SignInScreen(),
+        '/register': (BuildContext context) => RegistrationScreen(),
       },
     );
   }

@@ -214,36 +214,7 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 
-  void _facebookLogin({BuildContext context}) async {
-    try {
-      SystemChannels.textInput.invokeMethod('TextInput.hide');
-      _changeBlackVisible();
-      FacebookLogin facebookLogin = new FacebookLogin();
-
-      final FacebookLoginResult result =
-          await facebookLogin.logIn(['email', 'public_profile']);
-      FacebookAccessToken facebookAccessToken = result.accessToken;
-      switch (result.status) {
-        case FacebookLoginStatus.loggedIn:
-          /*  Auth.signInWithFacebok(result.accessToken.token).then((uid) {
-            Auth.getCurrentFirebaseUser().then((firebaseUser) {
-              User user = new User(
-                firstName: firebaseUser.displayName,
-                userID: firebaseUser.uid,
-                email: firebaseUser.email ?? '',
-                profilePictureURL: firebaseUser.photoUrl ?? '',
-              );
-              //   Auth.addUser(user);
-              Navigator.of(context).pop();
-            });
-          });*/
-          break;
-        case FacebookLoginStatus.cancelledByUser:
-        case FacebookLoginStatus.error:
-          _changeBlackVisible();
-      }
-    } catch (e) {
-      print("Error in facebook sign in: $e");
-    }
+  void _facebookLogin({BuildContext context}) {
+    Navigator.pushNamed(context, '/register');
   }
 }
