@@ -1,5 +1,9 @@
+import 'package:eventparking/services/secret.dart';
 import 'package:eventparking/widgets/SignUp/RegistrationCustomText.dart';
 import 'package:flutter/material.dart';
+import 'package:eventparking/widgets/CustomButton.dart';
+import 'package:amazon_cognito_identity_dart/cognito.dart';
+import 'package:flutter/services.dart';
 
 class RegistrationScreen extends StatefulWidget {
   _RegistrationScreenState createState() => _RegistrationScreenState();
@@ -14,20 +18,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   RegistrationCustomText _zipField;
   RegistrationCustomText _addressField;
   RegistrationCustomText _usernameField;
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+  final TextEditingController _email = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _emailField = new RegistrationCustomText(
       keyboard: TextInputType.emailAddress,
+      textEditingController: _email,
       icon: Icons.email,
       hint: "Email",
     );
 
     _passwordField = new RegistrationCustomText(
       keyboard: TextInputType.text,
-      textEditingController: passwordController,
+      textEditingController: _password,
       icon: Icons.lock,
       hint: "Password",
     );
@@ -110,9 +116,39 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             padding: EdgeInsets.only(
                 top: 10.0, bottom: 10.0, left: 15.0, right: 15.0),
             child: _zipField,
-          )
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 14.0, horizontal: 40.0),
+            child: CustomButton(
+              title: "Register",
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+              textColor: Colors.white,
+              onPressed: () {
+                registerUser(
+                    email: _email.text.trim(),
+                    password: _password.text,
+                    context: context);
+              },
+            ),
+          ),
         ])
       ])
     ]));
+  }
+
+  void registerUser(
+      {String email, String password, BuildContext context}) async {
+    final userPool = new CognitoUserPool(cognitoUserPoolId, cognitoClientId);
+    var data;
+    try {
+      data = await userPool.signUp(
+        email,
+        password,
+      );
+    } catch (e) {
+      print(e);
+    }
   }
 }

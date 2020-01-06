@@ -170,18 +170,12 @@ class _SignInScreenState extends State<SignInScreen> {
         final authDetails =
             new AuthenticationDetails(username: email, password: password);
         CognitoUserSession session;
+        cognitoUser.confirmRegistration('705759');
 
-        bool registrationConfirmed = false;
-        cognitoUser.resendConfirmationCode();
-        registrationConfirmed = await cognitoUser.confirmRegistration(password);
-        cognitoUser.resendConfirmationCode();
         try {
           session = await cognitoUser.authenticateUser(authDetails);
         } on CognitoUserNewPasswordRequiredException catch (e) {
           print(e);
-
-          session = await cognitoUser.authenticateUser(authDetails);
-
           // handle New Password challenge
         } on CognitoUserMfaRequiredException catch (e) {
           print(e);
@@ -190,6 +184,7 @@ class _SignInScreenState extends State<SignInScreen> {
           print(e);
           // handle SELECT_MFA_TYPE challenge
         } on CognitoUserMfaSetupException catch (e) {
+          cognitoUser.enableMfa();
           print(e);
           // handle MFA_SETUP challenge
         } on CognitoUserTotpRequiredException catch (e) {
@@ -205,7 +200,7 @@ class _SignInScreenState extends State<SignInScreen> {
           print(e);
         }
         print(session.getAccessToken().getJwtToken());
-        Navigator.pushNamed(context, '/maps');
+        Navigator.pushNamed(context, '/map');
         SystemChannels.textInput.invokeMethod('TextInput.hide');
         _changeBlackVisible();
       } catch (e) {

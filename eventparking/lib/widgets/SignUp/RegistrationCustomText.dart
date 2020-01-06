@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class RegistrationCustomText extends StatelessWidget {
+class RegistrationCustomText extends StatefulWidget {
   final String hint;
   final TextEditingController textEditingController;
   final TextInputType keyboard;
@@ -17,21 +17,24 @@ class RegistrationCustomText extends StatelessWidget {
       this.keyboard,
       this.icon,
       this.obscureText = false});
+  _RegistrationCustomText createState() => _RegistrationCustomText();
+}
 
+class _RegistrationCustomText extends State<RegistrationCustomText> {
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery.of(context).size.width;
-    pixelRatio = MediaQuery.of(context).devicePixelRatio;
+    widget.width = MediaQuery.of(context).size.width;
+    widget.pixelRatio = MediaQuery.of(context).devicePixelRatio;
     return new Material(
       borderRadius: BorderRadius.circular(30.0),
       elevation: 10,
       child: TextFormField(
-        controller: textEditingController,
-        keyboardType: keyboard,
+        controller: widget.textEditingController,
+        keyboardType: widget.keyboard,
         cursorColor: Colors.red[200],
         decoration: InputDecoration(
-          prefixIcon: Icon(icon, color: Colors.red[200], size: 20),
-          hintText: hint,
+          prefixIcon: Icon(widget.icon, color: Colors.red[200], size: 20),
+          hintText: widget.hint,
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),
               borderSide: BorderSide.none),
