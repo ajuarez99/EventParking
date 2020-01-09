@@ -170,7 +170,7 @@ class _SignInScreenState extends State<SignInScreen> {
         final authDetails =
             new AuthenticationDetails(username: email, password: password);
         CognitoUserSession session;
-        cognitoUser.confirmRegistration('705759');
+        // cognitoUser.confirmRegistration('705759');
 
         try {
           session = await cognitoUser.authenticateUser(authDetails);
