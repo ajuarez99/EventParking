@@ -29,10 +29,7 @@
 .pub-cache/
 .pub/
 /build/
-secret.dart
-Info.plist
-google-services.json
-GoogleServices-Info.plist
+
 
 # Web related
 lib/generated_plugin_registrant.dart
