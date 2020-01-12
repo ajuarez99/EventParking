@@ -1,6 +1,7 @@
 import 'package:amazon_cognito_identity_dart/cognito.dart';
 import 'package:eventparking/screens/IntroScreens/RegistrationScreen.dart';
 import 'package:eventparking/services/Validator.dart';
+import 'package:eventparking/services/secret.dart';
 import 'package:eventparking/widgets/CustomButton.dart';
 import 'package:eventparking/widgets/CustomText.dart';
 import 'package:flutter/material.dart';
@@ -67,12 +68,13 @@ class _CodeConfirmScreen extends State<CodeConfirmScreen> {
             padding: EdgeInsets.only(
                 top: 250,
                 bottom: 40,
-                left:
-                    80), // if boxes show error change this value around to not show error for you
+                left: 100,
+                right:
+                    100), // if boxes show error change this value around to not show error for you
             child: _code),
         Container(
             padding: EdgeInsets.only(
-                top: 350,
+                top: 320,
                 bottom: 40,
                 left:
                     140), // if boxes show error change this value around to not show error for you
@@ -97,5 +99,50 @@ class _CodeConfirmScreen extends State<CodeConfirmScreen> {
       {String email,
       String password,
       String code,
-      BuildContext context}) async {}
+      BuildContext context}) async {
+    if (Validator.validateEmail(email) &&
+        Validator.validatePassword(password)) {
+      try {
+        final userPool =
+            new CognitoUserPool(cognitoUserPoolId, cognitoClientId);
+        final cognitoUser = new CognitoUser(email, userPool);
+        final authDetails =
+            new AuthenticationDetails(username: email, password: password);
+        CognitoUserSession session;
+        cognitoUser.confirmRegistration(code);
+
+        try {
+          session = await cognitoUser.authenticateUser(authDetails);
+        } on CognitoUserNewPasswordRequiredException catch (e) {
+          print(e);
+          // handle New Password challenge
+        } on CognitoUserMfaRequiredException catch (e) {
+          print(e);
+          // handle SMS_MFA challenge
+        } on CognitoUserSelectMfaTypeException catch (e) {
+          print(e);
+          // handle SELECT_MFA_TYPE challenge
+        } on CognitoUserMfaSetupException catch (e) {
+          cognitoUser.enableMfa();
+          print(e);
+          // handle MFA_SETUP challenge
+        } on CognitoUserTotpRequiredException catch (e) {
+          print(e);
+          // handle SOFTWARE_TOKEN_MFA challenge
+        } on CognitoUserCustomChallengeException catch (e) {
+          print(e);
+          // handle CUSTOM_CHALLENGE challenge
+        } on CognitoUserConfirmationNecessaryException catch (e) {
+          print(e);
+          // handle User Confirmation Necessary
+        } catch (e) {
+          print(e);
+        }
+        print(session.getAccessToken().getJwtToken());
+        Navigator.pushNamed(context, '/map');
+      } catch (e) {
+        print("Error in email sign in: $e");
+      }
+    }
+  }
 }
