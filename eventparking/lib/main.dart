@@ -1,7 +1,8 @@
 import 'package:eventparking/screens/ProfileScreen.dart';
-import 'package:eventparking/screens/RegistrationScreen.dart';
+import 'package:eventparking/screens/IntroScreens/RegistrationScreen.dart';
+import 'package:eventparking/screens/IntroScreens/CodeConfirmScreen.dart';
 import 'package:flutter/material.dart';
-import './screens/SignInScreen.dart';
+import './screens/IntroScreens/SignInScreen.dart';
 import './screens/MapScreen.dart';
 
 void main() => runApp(MyApp());
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         '/profile': (BuildContext context) => ProfileScreen(),
         '/signin': (BuildContext context) => SignInScreen(),
         '/register': (BuildContext context) => RegistrationScreen(),
+        '/code': (BuildContext context) => CodeConfirmScreen(),
       },
     );
   }

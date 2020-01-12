@@ -1,10 +1,9 @@
 import 'package:eventparking/services/secret.dart';
 import 'package:eventparking/widgets/CustomButton.dart';
 import "package:flutter/material.dart";
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
-import '../widgets/CustomText.dart';
+import '../../widgets/CustomText.dart';
 import 'package:flutter/services.dart';
-import '../services/Validator.dart';
+import '../../services/Validator.dart';
 import 'package:amazon_cognito_identity_dart/cognito.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -120,7 +119,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 14.0, horizontal: 40.0),
                     child: CustomButton(
-                      title: "Facebook Login",
+                      title: "Registration",
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
                       textColor: Colors.white,
@@ -170,7 +169,6 @@ class _SignInScreenState extends State<SignInScreen> {
         final authDetails =
             new AuthenticationDetails(username: email, password: password);
         CognitoUserSession session;
-        // cognitoUser.confirmRegistration('705759');
 
         try {
           session = await cognitoUser.authenticateUser(authDetails);
