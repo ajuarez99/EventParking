@@ -143,8 +143,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     final userPool = new CognitoUserPool(cognitoUserPoolId, cognitoClientId);
     var data;
     try {
-      Navigator.pushNamed(context, '/code',
-          arguments: CodeArguments(email, password));
       data = await userPool.signUp(
         email,
         password,
