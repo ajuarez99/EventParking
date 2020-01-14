@@ -19,11 +19,10 @@ class _MapScreen extends State<MapScreen> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Text(widget.title),
-          centerTitle: true,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0))),
+        automaticallyImplyLeading: false,
+        title: Text(widget.title),
+        centerTitle: true,
+      ),
       body: Stack(
         children: <Widget>[
           googleMap.googleMap(),
