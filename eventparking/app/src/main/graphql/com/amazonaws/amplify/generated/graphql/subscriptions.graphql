@@ -1,0 +1,73 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateUsers(
+  $id: ID
+  $username: String
+  $firstName: String
+  $lastName: String
+  $streetAddress: String
+) {
+  onCreateUsers(
+    id: $id
+    username: $username
+    firstName: $firstName
+    lastName: $lastName
+    streetAddress: $streetAddress
+  ) {
+    id
+    username
+    firstName
+    lastName
+    streetAddress
+    state
+    zip
+    city
+  }
+}
+subscription OnUpdateUsers(
+  $id: ID
+  $username: String
+  $firstName: String
+  $lastName: String
+  $streetAddress: String
+) {
+  onUpdateUsers(
+    id: $id
+    username: $username
+    firstName: $firstName
+    lastName: $lastName
+    streetAddress: $streetAddress
+  ) {
+    id
+    username
+    firstName
+    lastName
+    streetAddress
+    state
+    zip
+    city
+  }
+}
+subscription OnDeleteUsers(
+  $id: ID
+  $username: String
+  $firstName: String
+  $lastName: String
+  $streetAddress: String
+) {
+  onDeleteUsers(
+    id: $id
+    username: $username
+    firstName: $firstName
+    lastName: $lastName
+    streetAddress: $streetAddress
+  ) {
+    id
+    username
+    firstName
+    lastName
+    streetAddress
+    state
+    zip
+    city
+  }
+}
