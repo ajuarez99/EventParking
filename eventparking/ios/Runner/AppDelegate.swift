@@ -9,7 +9,7 @@ import GoogleMaps
   ) -> Bool {
     GMSServices.provideAPIKey("AIzaSyAD5jNJcjrbNd0dRulBiBvQC1jpGaJhDts")
     GeneratedPluginRegistrant.register(with: self)
-    FirebaseApp.configure()
+   
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

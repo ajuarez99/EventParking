@@ -17,6 +17,8 @@ class _MapScreen extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData size = MediaQuery.of(context);
+
     return new Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -28,9 +30,9 @@ class _MapScreen extends State<MapScreen> {
           googleMap.googleMap(),
           Container(
             padding: EdgeInsets.only(
-                top: 500,
-                bottom:
-                    40), // if boxes show error change this value around to not show error for you
+                top: size.size.height * .6,
+                bottom: size.size.height *
+                    .1), // if boxes show error change this value around to not show error for you
             child: ListView(
               padding: EdgeInsets.only(left: 20),
               children: getParkingSpots(),

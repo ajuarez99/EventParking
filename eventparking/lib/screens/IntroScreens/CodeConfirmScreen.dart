@@ -1,5 +1,5 @@
 import 'package:amazon_cognito_identity_dart/cognito.dart';
-import 'package:eventparking/screens/IntroScreens/RegistrationScreen.dart';
+import '../../widgets/SignUp/RegistrationFields.dart';
 import 'package:eventparking/services/Validator.dart';
 import 'package:eventparking/services/secret.dart';
 import 'package:eventparking/widgets/CustomButton.dart';
