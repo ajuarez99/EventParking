@@ -1,3 +1,4 @@
+import 'package:eventparking/screens/IntroScreens/RegistrationScreen.dart';
 import 'package:eventparking/services/secret.dart';
 import 'package:eventparking/widgets/CustomButton.dart';
 import "package:flutter/material.dart";
@@ -43,8 +44,8 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+    return PageView(scrollDirection: Axis.horizontal, children: <Widget>[
+      Stack(
         children: <Widget>[
           Stack(
             alignment: Alignment.topLeft,
@@ -119,7 +120,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 14.0, horizontal: 40.0),
                     child: CustomButton(
-                      title: "Registration",
+                      title: "Registration ->",
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
                       textColor: Colors.white,
@@ -149,7 +150,8 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
         ],
       ),
-    );
+      RegistrationScreen()
+    ]);
   }
 
   void _changeBlackVisible() {

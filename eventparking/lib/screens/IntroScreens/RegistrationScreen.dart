@@ -1,11 +1,7 @@
 import 'package:eventparking/widgets/SignUp/RegistrationFields.dart';
 import 'package:flutter/material.dart';
 
-class RegistrationScreen extends StatefulWidget {
-  _RegistrationScreenState createState() => _RegistrationScreenState();
-}
-
-class _RegistrationScreenState extends State<RegistrationScreen> {
+class RegistrationScreen extends StatelessWidget {
   final RegistrationFields fields = RegistrationFields(
       email: TextEditingController(), password: TextEditingController());
   @override
