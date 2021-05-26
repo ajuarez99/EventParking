@@ -8,8 +8,8 @@ import '../CustomButton.dart';
 
 class RegistrationFields extends StatefulWidget {
   RegistrationFields({Key key, this.password, this.email}) : super(key: key);
-  TextEditingController password;
-  TextEditingController email;
+  final TextEditingController password;
+  final TextEditingController email;
   _RegistrationFields createState() => _RegistrationFields();
 }
 
@@ -148,9 +148,8 @@ class _RegistrationFields extends State<RegistrationFields> {
 
 void registerUser({String email, String password, BuildContext context}) async {
   final userPool = new CognitoUserPool(cognitoUserPoolId, cognitoClientId);
-  var data;
   try {
-    data = await userPool.signUp(
+    await userPool.signUp(
       email,
       password,
     );

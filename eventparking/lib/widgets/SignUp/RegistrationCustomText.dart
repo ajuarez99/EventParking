@@ -6,10 +6,6 @@ class RegistrationCustomText extends StatefulWidget {
   final TextInputType keyboard;
   final bool obscureText;
   final IconData icon;
-  double width;
-  double pixelRatio;
-  bool large;
-  bool medium;
 
   RegistrationCustomText(
       {this.hint,
@@ -21,10 +17,15 @@ class RegistrationCustomText extends StatefulWidget {
 }
 
 class _RegistrationCustomText extends State<RegistrationCustomText> {
+  double width;
+  double pixelRatio;
+  bool large;
+  bool medium;
+
   @override
   Widget build(BuildContext context) {
-    widget.width = MediaQuery.of(context).size.width;
-    widget.pixelRatio = MediaQuery.of(context).devicePixelRatio;
+    width = MediaQuery.of(context).size.width;
+    pixelRatio = MediaQuery.of(context).devicePixelRatio;
     return new Material(
       borderRadius: BorderRadius.circular(30.0),
       elevation: 10,
